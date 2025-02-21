@@ -1,7 +1,25 @@
-﻿
+﻿@model List<Department>
 @{
     ViewData["Title"] = "viewdepartments";
 }
 
-<h1>viewdepartments</h1>
-
+<h1>Departments</h1>
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Manager</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var department in Model)
+        {
+            <tr>
+                <th scope="row">@department.ID</th>
+                <td>@department.Name</td>
+                <td>@department.MGRName</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,5 +1,6 @@
 ﻿using Company.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Company.Controllers
 {
@@ -8,7 +9,7 @@ namespace Company.Controllers
         DbApp db = new();
         public IActionResult Index()
         {
-            List<Department> departments = [.. db.Departments];
+            List<Department> departments = db.Departments?.Include(d => d.Employees).ToList() ?? [];
             return View("viewdepartments", departments);
         }
     }
