@@ -44,7 +44,7 @@ namespace Company.Migrations
                         column: x => x.DepartmentID,
                         principalTable: "Departments",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
