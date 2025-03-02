@@ -7,7 +7,7 @@ namespace Company
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews();//AddSessionStateTempDataProvider();
 
             var app = builder.Build();
 
@@ -16,6 +16,7 @@ namespace Company
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -24,8 +25,7 @@ namespace Company
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-
+                pattern: "{controller=Home}/{action=Index}/{id?}"); //here id is optional
             app.Run();
         }
     }
