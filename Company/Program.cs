@@ -8,7 +8,12 @@ namespace Company
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();//AddSessionStateTempDataProvider();
-
+            builder.Services.AddSession(p => 
+            { 
+                p.IdleTimeout = TimeSpan.FromMinutes(15);
+                p.Cookie.HttpOnly = true;
+                p.Cookie.IsEssential = true;
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -19,10 +24,10 @@ namespace Company
 
             app.UseStaticFiles();
 
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();
-
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}"); //here id is optional
