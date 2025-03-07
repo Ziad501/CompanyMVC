@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create New Department</h1>
+
+<form action="/department/Save" method="get">
+    <label>Department Name</label>
+    <input type="text" name="Name" class="form-control"/><br />
+    <label>Manager Name</label><br />
+    <input type="text" name="MGRName" class="form-control"/><br />
+    <input type="submit" value="Save" class="btn btn-success">
+</form>
